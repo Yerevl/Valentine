@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        #valentineBox {
+            display: none;
+        }
+        #buttons {
+            display: none;
+            margin-top: 20px;
+        }
+        #yesButton, #noButton {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        #yesButton {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            transition: all 0.3s ease-in-out;
+        }
+        #noButton {
+            background-color: #999;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>masukkan nama ;)</h2>
+    <input type="text" id="nameInput" placeholder="tulis disini">
+    <button onclick="askValentine()">dah</button>
+    
+    <div id="valentineBox">
+        <h2 id="valentineText"></h2>
+        <div id="buttons">
+            <button id="yesButton" onclick="alert('Horeee, tanggal 14 jalan ya❤️')">Mauuu</button>
+            <button id="noButton" onclick="growYesButton()">GA</button>
+        </div>
+    </div>
+
+    <script>
+        function askValentine() {
+            let name = document.getElementById('nameInput').value;
+            if (name.trim() === "") {
+                alert("tulis namamu stellaaa!");
+                return;
+            }
+            document.getElementById('valentineText').innerText = name + ", valentine date mau ngga?";
+            document.getElementById('valentineBox').style.display = "block";
+            document.getElementById('buttons').style.display = "block";
+        }
+
+        function growYesButton() {
+            let yesButton = document.getElementById('yesButton');
+            let noButton = document.getElementById('noButton');
+            let currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            
+            if (currentSize < 200) {
+                yesButton.style.fontSize = (currentSize + 10) + 'px';
+                yesButton.style.padding = (currentSize + 10) + 'px';
+            } else {
+                yesButton.style.position = 'fixed';
+                yesButton.style.top = '0';
+                yesButton.style.left = '0';
+                yesButton.style.width = '100vw';
+                yesButton.style.height = '100vh';
+                yesButton.style.fontSize = '50px';
+                yesButton.innerText = "HAHAHA HARUS MAU! ❤️";
+                noButton.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
